@@ -33,16 +33,16 @@ echo $'\n'---$'\n'
 # Обход файлов, содержащихся в директории
 for file in $(pwd)/*; do
 	if [ -d "$file" ]; then
-		echo "$file --> is a directory";
+		echo "$file --> is a directory"
 	elif [ -f "$file" ]; then
-		echo "$file --> is a file";
+		echo "$file --> is a file"
 	fi
 done
 
 echo $'\n'---$'\n'
 
 #Циклы for в стиле C
-for ((i=0; i<10; i++)); do
+for ((i = 0; i < 10; i++)); do
 	echo "$i"
 done
 
@@ -58,9 +58,9 @@ done
 echo $'\n'---$'\n'
 
 # Вложенные циклы
-for ((i=0; i<5; i++)); do
+for ((i = 0; i < 5; i++)); do
 	echo "$i -"
-	for ((j=0; j<5; j++)); do
+	for ((j = 0; j < 5; j++)); do
 		echo "- $j"
 	done
 done
@@ -79,9 +79,9 @@ done
 echo $'\n'---$'\n'
 
 # Обработка вывода, выполняемого в цикле
-for ((i=0; i<10; i++)); do
+for ((i = 0; i < 10; i++)); do
 	echo "$i"
-done > output_file.txt
+done >output_file.txt
 
 echo $'\n'---$'\n'
 
@@ -93,8 +93,8 @@ for folder in $PATH; do
 	for file in $folder/*.exe; do
 		if [ $count_input \> 0 ]; then
 			# if [ -x "$file" ]; then
-				echo "	$file"
-			# fi	
+			echo "	$file"
+			# fi
 		else
 			break
 		fi
