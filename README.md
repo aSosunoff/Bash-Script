@@ -1,5 +1,6 @@
 
 # Как устроены bash-скрипты
+
 ```bash
 #!/usr/bin/env bash
 
@@ -28,6 +29,7 @@ whoami
 ```
 
 # Сравнение чисел
+
 ```bash
 #!/usr/bin/env bash
 
@@ -51,6 +53,7 @@ fi
 ```
 
 # Сравнение строк
+
 ```bash
 #!/usr/bin/env bash
 
@@ -88,6 +91,7 @@ sort user_list.txt
 ```
 
 # Проверки файлов
+
 ```bash
 #!/usr/bin/env bash
 
@@ -115,6 +119,7 @@ fi
 ```
 
 # Вывод сообщений
+
 ```bash
 #!/usr/bin/env bash
 
@@ -131,6 +136,7 @@ whoami
 ```
 
 # Использование переменных
+
 ```bash
 # Переменные позволяют хранить в файле сценария информацию, например — результаты работы команд для использования их другими командами.
 
@@ -143,6 +149,7 @@ whoami
 ```
 
 # Переменные среды
+
 ```bash
 #!/usr/bin/env bash
 
@@ -154,6 +161,7 @@ echo "Home for the current user id: \$HOME -> $HOME"
 ```
 
 # Пользовательские переменные
+
 ```bash
 #!/usr/bin/env bash
 
@@ -167,6 +175,7 @@ echo $name $surname
 ```
 
 # Подстановка команд
+
 ```bash
 #!/usr/bin/env bash
 
@@ -185,6 +194,7 @@ echo $mydir ' or ' $mydir_2
 ```
 
 # Математические операции
+
 ```bash
 #!/usr/bin/env bash
 
@@ -195,6 +205,7 @@ echo $var1
 ```
 
 # Управляющая конструкция if-then
+
 ```bash
 #!/usr/bin/env bash
 
@@ -208,6 +219,7 @@ fi
 ```
 
 # Управляющая конструкция if-then-else
+
 ```bash
 #!/usr/bin/env bash
 
@@ -225,6 +237,7 @@ fi
 
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Циклы for
@@ -332,6 +345,7 @@ done
 
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Check paramerer
@@ -445,6 +459,7 @@ fi
 
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Всё в Linux — это файлы, в том числе — ввод и вывод. Операционная система идентифицирует файлы с использованием дескрипторов.
@@ -468,6 +483,7 @@ echo "This is a test of redirecting all output"
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Создание собственного перенаправления вывода
@@ -478,6 +494,7 @@ echo "And this should be back on the screen"
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Создание дескрипторов файлов для ввода данных
@@ -497,6 +514,7 @@ esac
 
 
 #!/usr/bin/env bash
+
 ```bash
 
 function functionTest {
@@ -511,6 +529,7 @@ echo "return value from functionTest is => $?"
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 function test {
@@ -521,6 +540,7 @@ echo $result
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Глобальные переменные
@@ -534,6 +554,7 @@ echo $text
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Локальные переменные
@@ -548,6 +569,7 @@ echo $r
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Передача функциям массивов в качестве аргументов
@@ -562,6 +584,7 @@ text ${myArr[*]}
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 . myfunc.sh
 
@@ -570,6 +593,7 @@ echo $(text)
 ```
 
 #!/usr/bin/env bash
+
 ```bash
 
 # Создание и использование библиотек

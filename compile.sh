@@ -22,6 +22,7 @@ for fileMain in $(getDirectoryName); do
 		for line in $(cat $fileSub); do
 			if $is_header; then
 				echo ${line}
+				echo ""
 				is_header=false
 				echo "\`\`\`bash"
 			else
