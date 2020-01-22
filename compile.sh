@@ -13,8 +13,7 @@ function getHeader {
 		
 		for line in $(cat $fileSub); do
 			count_line=$[ $count_line + 1 ]
-
-			if [ ":<<////" = "${line:0:-1}" ]; then
+			if [[ "$line" =~ ^\:\<\<\/\/\/\/ ]]; then
 				echo $(sed -n "$[ $count_line + 1 ]{p;q}" $fileSub)
 				exit
 			fi
@@ -28,7 +27,7 @@ function getHeader {
 for fileMain in $(getDirectoryName); do
 	folderName="${fileMain:2}";
 	echo ""
-
+	# $(find ./02_for_while/ -name '*.sh');
 	for fileSub in $(find ./$folderName -name '*.sh'); do
 		IFS=$'\n'
 		
@@ -38,12 +37,12 @@ for fileMain in $(getDirectoryName); do
 		closer='```'
 
 		for line in $(cat $fileSub); do
-			if [ ":<<////" = "${line:0:-1}" ]; then
+			if [[ "$line" =~ ^\:\<\<\/\/\/\/ ]]; then
 				echo "$closer"
 				echo "<details>"
 				echo "	<summary>Детальная информация</summary>"
 				closer="</details>"
-			elif [ "////" != "$line" ]; then
+			elif [[ ! "$line" =~ ^\/\/\/\/ ]]; then
 				echo "$line"
 			fi
 		done
