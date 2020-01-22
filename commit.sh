@@ -1,1 +1,1 @@
-bash compile.sh&&git add .&&git commit -m "update"&&git push -u origin&&echo 'https://github.com/aSosunoff/Bash-Script'
+bash compile.sh&&git add .&&git commit -m "update"&&git push -u origin&&echo

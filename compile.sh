@@ -28,7 +28,7 @@ for fileMain in $(getDirectoryName); do
 	folderName="${fileMain:2}";
 	echo ""
 	# $(find ./02_for_while/ -name '*.sh');
-	for fileSub in $(find ./$folderName -name '*.sh'); do
+	for fileSub in $(find ./$folderName -iname '[0-9].sh'); do
 		IFS=$'\n'
 		
 		echo "# $(getHeader $fileSub)"
