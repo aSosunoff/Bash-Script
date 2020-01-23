@@ -4,50 +4,63 @@ function getDirectoryName {
 	echo $(find -mindepth 1 -maxdepth 1 -type d -regex '^\.\/[^.].*');
 }
 
-function getHeader {
-	if [ -n $1 ]; then
-		fileSub=$1
-	
-		count_line=0
-		IFS=$'\n'
-		
-		for line in $(cat $fileSub); do
-			count_line=$[ $count_line + 1 ]
-			if [[ "$line" =~ ^\:\<\<\/\/\/\/ ]]; then
-				echo $(sed -n "$[ $count_line + 1 ]{p;q}" $fileSub)
-				exit
-			fi
-		done
-	fi
-	echo ''
-}
-
 >README.md
 
 for fileMain in $(getDirectoryName); do
 	folderName="${fileMain:2}";
-	echo ""
-	# $(find ./02_for_while/ -name '*.sh');
 	for fileSub in $(find ./$folderName -regex '.*\/[0-9]+\.sh'); do
-		IFS=$'\n'
-		
-		echo "# $(getHeader $fileSub)"
-		echo ""
-		echo '```bash'
-		closer='```'
+		awk '
+			BEGIN {
+				x = 0
+				FS="\n"
+			}
+			{
+				if($1 == ":<<\x27END_COMMENT\x27")
+					x = 1
 
-		for line in $(cat $fileSub); do
-			if [[ "$line" =~ ^\:\<\<\/\/\/\/ ]]; then
-				echo "$closer"
-				echo "<details>"
-				echo "	<summary>Детальная информация</summary>"
-				closer="</details>"
-			elif [[ ! "$line" =~ ^\/\/\/\/ ]]; then
-				echo "$line"
-			fi
-		done
+				if(x == 1 && $1 ~ "^#")
+					print $0
+			}' $fileSub
 
-		echo "$closer"
-		echo ""
+		echo $'\n'
+
+		awk '
+			BEGIN {
+				x = 1
+				FS="\n"
+				print "```bash"
+			}
+			{
+				if($1 == ":<<\x27END_COMMENT\x27")
+					x = 0
+
+				if(x == 1)
+					print $1
+			}
+			END {
+				print "```"
+			}' $fileSub
+
+		echo $'\n'
+
+		awk '
+			BEGIN {
+				x = 0
+				FS="\n"
+				print "<details>"
+				print "\t<summary>Детальная информация</summary>\n"
+			}
+			{
+				if($1 == ":<<\x27END_COMMENT\x27")
+					x = 1
+
+				if(x == 1 && $1 != ":<<\x27END_COMMENT\x27" && $1 != "END_COMMENT")
+					print $1
+			}
+			END {
+				print "</details>"
+			}' $fileSub
+
+		echo $'\n'
 	done
 done >>README.md
