@@ -1,1 +1,1 @@
-bash compile.sh&&git add .&&git commit -m "update"&&git push -u origin&&echo
+bash compile.sh&&git add .&&git commit -m "update"&&git push -u origin
